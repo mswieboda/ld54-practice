@@ -12,6 +12,12 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59606, 0)
 script = ExtResource("1_iwcmm")
 
+[node name="cam_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.971899, 0.235397, 0, -0.235397, 0.971899, 0, 2.81641, 3.29884)
+
+[node name="camera" type="Camera3D" parent="cam_pivot"]
+current = true
+
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_i4al3")
 
@@ -22,7 +28,3 @@ mesh = SubResource("CapsuleMesh_w2vir")
 transform = Transform3D(0.69, 0, 0, 0, 0.69, 0, 0, 0, 0.69, 0, 1.53597, 0)
 mesh = SubResource("SphereMesh_br882")
 skeleton = NodePath("../..")
-
-[node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.840831, 0.541297, 0, -0.541297, 0.840831, 0, 3.83623, 3.02165)
-current = true
