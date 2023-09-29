@@ -8,9 +8,6 @@
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.332342, 0.943159, 0, -0.943159, -0.332342, 0, 126.848, -40.4804)
 
-[node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.594079, 0.804407, 0, -0.804407, 0.594079, 0, 20.6311, 27.9429)
-
 [node name="room" parent="." instance=ExtResource("1_clu0u")]
 
 [node name="player" parent="." instance=ExtResource("2_ashhh")]
