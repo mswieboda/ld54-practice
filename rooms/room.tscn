@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://hbqcd6lnpp5g"]
+[gd_scene load_steps=8 format=3 uid="uid://hbqcd6lnpp5g"]
 
 [ext_resource type="Texture2D" uid="uid://dfwpqcu443kwe" path="res://assets/textures/marble.jpg" id="1_4ivvh"]
 
@@ -14,15 +14,48 @@ uv1_scale = Vector3(5, 5, 5)
 [sub_resource type="BoxMesh" id="BoxMesh_jpjf8"]
 material = SubResource("StandardMaterial3D_jbisn")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8e7h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vj27g"]
+albedo_texture = ExtResource("1_4ivvh")
+uv1_scale = Vector3(12.5, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bvg2y"]
+material = SubResource("StandardMaterial3D_vj27g")
+
 [node name="room" type="Node3D"]
 
 [node name="floor" type="Node3D" parent="."]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 
-[node name="floor" type="StaticBody3D" parent="floor"]
+[node name="body" type="StaticBody3D" parent="floor"]
 
-[node name="collision" type="CollisionShape3D" parent="floor/floor"]
+[node name="collision" type="CollisionShape3D" parent="floor/body"]
 shape = SubResource("BoxShape3D_5cnql")
 
-[node name="mesh" type="MeshInstance3D" parent="floor/floor"]
+[node name="mesh" type="MeshInstance3D" parent="floor/body"]
 mesh = SubResource("BoxMesh_jpjf8")
+
+[node name="walls" type="Node3D" parent="."]
+
+[node name="wall" type="Node3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 50, -25, 2.5, 0)
+
+[node name="body" type="StaticBody3D" parent="walls/wall"]
+
+[node name="collision" type="CollisionShape3D" parent="walls/wall/body"]
+shape = SubResource("BoxShape3D_y8e7h")
+
+[node name="mesh" type="MeshInstance3D" parent="walls/wall/body"]
+mesh = SubResource("BoxMesh_bvg2y")
+
+[node name="wall2" type="Node3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 50, 25, 2.5, 0)
+
+[node name="body" type="StaticBody3D" parent="walls/wall2"]
+
+[node name="collision" type="CollisionShape3D" parent="walls/wall2/body"]
+shape = SubResource("BoxShape3D_y8e7h")
+
+[node name="mesh" type="MeshInstance3D" parent="walls/wall2/body"]
+mesh = SubResource("BoxMesh_bvg2y")
