@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhmipgfb3mw83"]
+[gd_scene load_steps=4 format=3 uid="uid://dhmipgfb3mw83"]
 
 [ext_resource type="PackedScene" uid="uid://hbqcd6lnpp5g" path="res://rooms/room.tscn" id="1_clu0u"]
 [ext_resource type="PackedScene" uid="uid://o1oqtdmfghxi" path="res://objs/player.tscn" id="2_ashhh"]
+[ext_resource type="PackedScene" uid="uid://c4it0gx0j4wx2" path="res://objs/actions/key.tscn" id="2_ta1ak"]
 
 [node name="main" type="Node3D"]
 
@@ -10,4 +11,46 @@ transform = Transform3D(1, 0, 0, 0, -0.332342, 0.943159, 0, -0.943159, -0.332342
 
 [node name="room" parent="." instance=ExtResource("1_clu0u")]
 
+[node name="keys" type="Node3D" parent="room"]
+
+[node name="key" parent="room/keys" instance=ExtResource("2_ta1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -5)
+
+[node name="key2" parent="room/keys" instance=ExtResource("2_ta1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24066, 1, -12.0972)
+
+[node name="key3" parent="room/keys" instance=ExtResource("2_ta1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.14154, 1, -3.92454)
+
+[node name="key4" parent="room/keys" instance=ExtResource("2_ta1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.14154, 1, 4.75387)
+
 [node name="player" parent="." instance=ExtResource("2_ashhh")]
+
+[node name="gui" type="CanvasLayer" parent="."]
+
+[node name="margin" type="MarginContainer" parent="gui"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="hbox" type="HBoxContainer" parent="gui/margin"]
+layout_mode = 2
+
+[node name="vbox" type="VBoxContainer" parent="gui/margin/hbox"]
+layout_mode = 2
+
+[node name="inventory_label" type="Label" parent="gui/margin/hbox/vbox"]
+layout_mode = 2
+
+[node name="action_label" type="Label" parent="gui/margin/hbox/vbox"]
+layout_mode = 2
+text = " "

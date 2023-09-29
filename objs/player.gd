@@ -2,13 +2,15 @@ extends CharacterBody3D
 
 
 const SPEED = 7
-const JUMP_VELOCITY = 6
+const JUMP_VELOCITY = 13
 const MOUSE_SENSITIVITY = 0.0013
 const MAX_VERTICAL_LOOK = 0.3
+const FAKE_EXTRA_GRAVITY = 5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var inventory_keys = 0
 
 func _ready():
   Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -24,7 +26,7 @@ func _unhandled_input(event):
 func movement(delta):
   # add the gravity
   if not is_on_floor():
-    velocity.y -= gravity * delta
+    velocity.y -= gravity * delta * FAKE_EXTRA_GRAVITY
 
   # handle jump
   if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -60,4 +62,4 @@ func mouse_capture(event : InputEvent):
 
 func unhandled_input_actions(event : InputEvent):
   if event.is_action_pressed("action"):
-    print('>>> action button pressed!')
+    Action.perform()
