@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://hbqcd6lnpp5g"]
+
+[ext_resource type="Texture2D" uid="uid://dfwpqcu443kwe" path="res://assets/textures/marble.jpg" id="1_4ivvh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5cnql"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbisn"]
+albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
+albedo_texture = ExtResource("1_4ivvh")
+metallic = 0.9
+roughness = 0.5
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jpjf8"]
+material = SubResource("StandardMaterial3D_jbisn")
+
+[node name="room" type="Node3D"]
+
+[node name="floor" type="Node3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+
+[node name="floor" type="StaticBody3D" parent="floor"]
+
+[node name="collision" type="CollisionShape3D" parent="floor/floor"]
+shape = SubResource("BoxShape3D_5cnql")
+
+[node name="mesh" type="MeshInstance3D" parent="floor/floor"]
+mesh = SubResource("BoxMesh_jpjf8")

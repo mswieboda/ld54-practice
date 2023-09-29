@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhmipgfb3mw83"]
+
+[ext_resource type="PackedScene" uid="uid://hbqcd6lnpp5g" path="res://rooms/room.tscn" id="1_clu0u"]
+[ext_resource type="PackedScene" uid="uid://o1oqtdmfghxi" path="res://objs/player.tscn" id="2_ashhh"]
+
+[node name="main" type="Node3D"]
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.332342, 0.943159, 0, -0.943159, -0.332342, 0, 126.848, -40.4804)
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.594079, 0.804407, 0, -0.804407, 0.594079, 0, 20.6311, 27.9429)
+
+[node name="room" parent="." instance=ExtResource("1_clu0u")]
+
+[node name="player" parent="." instance=ExtResource("2_ashhh")]
